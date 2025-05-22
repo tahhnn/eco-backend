@@ -10,9 +10,9 @@ export class Car extends Document {
     carModel: string
 
     @Prop()
-    liscensceDate: string
+    liscenscePlate: string
 
-    @Prop({default: 'active'})
+    @Prop({ default: 'active' })
     status: string
 
     @Prop()
@@ -25,9 +25,9 @@ export class Car extends Document {
     brand: string
 
     @Prop({ type: Types.ObjectId, ref: 'User', required: true })
-    owerId: Types.ObjectId
+    ownerId: Types.ObjectId
 
-    @Prop({ type: [String] })
+    @Prop({ type: [String], default: [] })
     imageUrl: string[]
 }
 

@@ -8,11 +8,16 @@ import { BookingsModule } from './modules/bookings/bookings.module';
 import { ReviewsModule } from './modules/reviews/reviews.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CacheModule } from '@nestjs/cache-manager';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true, // để dùng biến môi trường ở bất cứ đâu
+    }),
+    CacheModule.register({
+      isGlobal: true,
+      ttl: 7 * 24 * 60 * 60 * 1000, // 7 days in milliseconds
     }),
     AuthModule,
     UsersModule,

@@ -6,4 +6,7 @@ export class loginDto {
 
     @IsString()
     password: string;
+
+    @IsString()
+    deviceId: string;
 }

@@ -13,10 +13,10 @@ export class User extends Document {
     @Prop({ unique: true })
     name: string;
 
-    @Prop({default: 'user'})
+    @Prop({ default: 'user' })
     role: string;
 
-    @Prop()
+    @Prop({ default: "" })
     avatar: string;
 
     @Prop()
@@ -25,12 +25,20 @@ export class User extends Document {
     @Prop()
     phone: string;
 
+    @Prop({ default: true })
+    isPublicProfile: boolean
+
     @Prop()
     status: boolean;
 
     @Prop()
     bio: string;
 
+    @Prop()
+    deviceId: string;
+
+    @Prop({ type: [{ deviceId: String, verifiedAt: Date }], default: [] })
+    verifiedDevices: Array<{ deviceId: string; verifiedAt: Date }>;
 }
 export const UserSchema = SchemaFactory.createForClass(User);
 UserSchema.virtual('cars', {
